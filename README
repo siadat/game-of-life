@@ -5,6 +5,6 @@ Requires PyGame.
 Keys:
   Play/pause         Enter
   Add alive cells    Left Mouse Button
-  Quit               Escape <or> Q
   Pan                Up/Down/Left/Right Arrows
-  Zoom               =/-
+  Zoom               -/=
+  Quit               Esc <or> Q
