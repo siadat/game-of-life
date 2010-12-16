@@ -2,7 +2,6 @@ import pygame, sys, os
 import random
 import math
 from pygame.locals import *
-#import Numeric
 
 if not pygame.font:  print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
@@ -17,13 +16,13 @@ screen = pygame.display.get_surface()
 
 print ''
 print 'Usage:'
-print '  Press ENTER to start/stop.'
-print '  Left click on the screen to add alive cells.'
-print '  Press ESC to play/pause.'
+print '  Return              Play/pause animation'
+print '  Left-Mouse-Click    Add alive cells'
+print '  Escape [or] q       Quit'
+print '  Arrows              Panning'
+print '  =/-                 Zoom in/out'
 print ''
 
-
-#cells = [[0 for x in range(nbr_x)] for x in range(nbr_y)]
 def updatecells(cells):
 	newcells =  [[0 for x in range(nbr_x)] for x in range(nbr_y)]
 	for i in range(1,nbr_x-2):
@@ -79,6 +78,7 @@ def ascii_to_ca(str_arr):
 			if char is not '-':
 				ret_dict[(pos_x,pos_y)] = [1,0]
 	return ret_dict
+
 dict = ascii_to_ca(initial_dict_str)
 
 def update_neighbours(dict):
