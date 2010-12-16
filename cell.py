@@ -46,8 +46,40 @@ def updatecells(cells):
 	return newcells
 
 
-dict = {(40,41):[1,0],(41,40):[1,0],(41,41):[1,0], (40,40):[1,0],
-	(20,20):[1,0], (20,21):[1,0], (20,22):[1,0], (21,22):[1,0],(22,21):[1,0]}
+
+initial_dict_str = [\
+		"---------------------------", 
+		"---------------------------", 
+		"---##----------------------", 
+		"----#----------------------", 
+		"------#--##----#-----------", 
+		"----------#---#-#----------", 
+		"---------------#-----------", 
+		"----------##---#-----------", 
+		"----------##---#-----------", 
+		"---------------#-----------", 
+		"-----#---------#----##-----", 
+		"---#-#---------#----#------", 
+		"----##---------#----#------",
+		"---------------------------", 
+		"---------------------------", 
+		"---------------------------", 
+		"-------------#-------------", 
+		"-----------#-#-------------", 
+		"------------##-------------",
+		]
+def ascii_to_ca(str_arr):
+	ret_dict = {}
+	pos_y = 0
+	for str in str_arr:
+		pos_y += 1
+		pos_x = 0
+		for char in str:
+			pos_x += 1
+			if char is not '-':
+				ret_dict[(pos_x,pos_y)] = [1,0]
+	return ret_dict
+dict = ascii_to_ca(initial_dict_str)
 
 def update_neighbours(dict):
 	newdict = {}
@@ -126,11 +158,10 @@ def update_neighbours(dict):
 				newdict[key][0] = 1
 			elif neighbours > 3 or neighbours < 2:
 				#newdict[key][0] = 0
-				newdict[key][0] = newdict[key][0] - 0.01
+				newdict[key][0] = newdict[key][0] - 0.15
 				
 		elif newdict[key][0]<1 and newdict[key][0]>0:
-			#print newdict[key][0]
-			newdict[key][0] = newdict[key][0] - 0.01
+			newdict[key][0] = newdict[key][0] - 0.15
 			if newdict[key][0] < 0:
 				newdict[key][0] = 0
 	return newdict
@@ -158,7 +189,7 @@ while True:
 	input = pygame.event.get()
 	for event in input:
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_ESCAPE:
+			if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
 				sys.exit(0)
 			elif event.key == pygame.K_RETURN:
 				paused = not paused

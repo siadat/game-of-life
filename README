@@ -1,0 +1,8 @@
+A Simple Python (with PyGame) implementation of the Conway's Game of Life Cellular Automata.
+
+Requires PyGame.
+
+Keys:
+  Return:           to play/pause animation.
+  Left-Mouse-Click: add alive cells.
+  Escape or q:      quit.
